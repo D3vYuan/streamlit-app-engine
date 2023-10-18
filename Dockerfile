@@ -32,4 +32,4 @@ EXPOSE 8080
 
 # HEALTHCHECK CMD curl --fail http://localhost:8080/_stcore/health
 
-ENTRYPOINT ["streamlit", "run", "streamlit_101.py", "--server.port=8080", "--server.address=0.0.0.0", "--server.enableCORS=false", "--server.enableWebsocketCompression=false"]
+ENTRYPOINT ["streamlit", "run", "streamlit_101.py", "--server.port=8080", "--server.address=0.0.0.0", "--server.enableCORS=false", "--server.enableWebsocketCompression=false", "server.enableXsrfProtection=false"]
