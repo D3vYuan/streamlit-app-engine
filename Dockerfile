@@ -20,4 +20,4 @@ EXPOSE 8501
 
 HEALTHCHECK CMD curl --fail http://localhost:8501/_stcore/health
 
-ENTRYPOINT ["streamlit", "run", "streamlit_101.py", "--server.port=8501", "--server.address=0.0.0.0", "--server.enableCORS=false"]
+ENTRYPOINT ["streamlit", "run", "streamlit_101.py", "--server.port=8501", "--server.address=0.0.0.0", "--server.enableCORS=false", "--server.enableWebsocketCompression=false"]

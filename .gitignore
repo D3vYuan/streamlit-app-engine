@@ -6,6 +6,7 @@ __pycache__/
 # Script
 *.sh
 !build_docker.sh
+!run_docker.sh
 
 # C extensions
 *.so
