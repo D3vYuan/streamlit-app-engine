@@ -15,8 +15,16 @@ runtime_config:
 
 # The number of running instances may drop below this value for a short period of time during some events. If your application requires running continuously on a certain number of instances, consider overprovisioning.
 # https://cloud.google.com/appengine/docs/flexible/reference/app-yaml?tab=python#:~:text=to%20the%20service.-,Note%3A%20The%20number%20of%20running%20instances%20may%20drop%20below%20this%20value%20for%20a%20short%20period%20of%20time%20during%20some%20events.%20If%20your%20application%20requires%20running%20continuously%20on%20a%20certain%20number%20of%20instances%2C%20consider%20overprovisioning.,-Defining%20environment%20variables
-manual_scaling:
-  instances: 1
+# manual_scaling:
+#   instances: 1
+
+automatic_scaling:
+  min_num_instances: 1
+  max_num_instances: 2
+  cool_down_period_sec: 180
+  cpu_utilization:
+    target_utilization: 0.8
+  target_concurrent_requests: 100
 
 resources:
   cpu: 1
