@@ -1,7 +1,7 @@
 #!/bin/bash
 
 image_name="streamlit-app"
-source_port=8051
+source_port=8080
 destination_port=8501
 
 echo "docker run -itd --rm -p ${source_port}:${destination_port} ${image_name}"
