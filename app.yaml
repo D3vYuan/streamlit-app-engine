@@ -14,10 +14,11 @@ runtime_config:
 # https://cloud.google.com/appengine/docs/flexible/reference/app-yaml?tab=python#:~:text=to%20the%20service.-,Note%3A%20The%20number%20of%20running%20instances%20may%20drop%20below%20this%20value%20for%20a%20short%20period%20of%20time%20during%20some%20events.%20If%20your%20application%20requires%20running%20continuously%20on%20a%20certain%20number%20of%20instances%2C%20consider%20overprovisioning.,-Defining%20environment%20variables
 manual_scaling:
   instances: 1
-  resources:
-    cpu: 1
-    memory_gb: 0.5
-    disk_size_gb: 10
+
+resources:
+  cpu: 1
+  memory_gb: 0.5
+  disk_size_gb: 10
 
 # instance_class: B2
 network:
