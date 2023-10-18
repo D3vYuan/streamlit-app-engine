@@ -7,6 +7,7 @@ __pycache__/
 *.sh
 !build_docker.sh
 !run_docker.sh
+!build_app_engine.sh
 
 # C extensions
 *.so
