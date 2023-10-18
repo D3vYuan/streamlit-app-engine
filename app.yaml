@@ -6,6 +6,12 @@ env: flex
 # for production use. For more information, see:
 # https://cloud.google.com/appengine/docs/flexible/python/configuring-your-app-with-app-yaml
  
+runtime_config:
+  # You can also specify 2 for Python 2.7
+  python_version: 3
+
+# The number of running instances may drop below this value for a short period of time during some events. If your application requires running continuously on a certain number of instances, consider overprovisioning.
+# https://cloud.google.com/appengine/docs/flexible/reference/app-yaml?tab=python#:~:text=to%20the%20service.-,Note%3A%20The%20number%20of%20running%20instances%20may%20drop%20below%20this%20value%20for%20a%20short%20period%20of%20time%20during%20some%20events.%20If%20your%20application%20requires%20running%20continuously%20on%20a%20certain%20number%20of%20instances%2C%20consider%20overprovisioning.,-Defining%20environment%20variables
 manual_scaling:
   instances: 1
   resources:
@@ -16,3 +22,18 @@ manual_scaling:
 # instance_class: B2
 network:
   session_affinity: true
+
+liveness_check:
+  path: "/liveness_check"
+  check_interval_sec: 30
+  timeout_sec: 4
+  failure_threshold: 3
+  success_threshold: 3
+
+readiness_check:
+  path: "/readiness_check"
+  check_interval_sec: 5
+  timeout_sec: 4
+  failure_threshold: 3
+  success_threshold: 3
+  app_start_timeout_sec: 300
