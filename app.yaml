@@ -26,7 +26,7 @@ network:
   subnetwork_name: log-vpc
   session_affinity: true
   forwarded_ports:
-    - 8080:8501
+    - 8501:8501
 
 liveness_check:
   path: "/liveness_check"
