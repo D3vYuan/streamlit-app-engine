@@ -1,0 +1,7 @@
+python-dotenv
+langchain
+streamlit
+db-dtypes
+tabulate
+google-cloud-aiplatform
+google-cloud-bigquery
