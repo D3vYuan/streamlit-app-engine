@@ -25,6 +25,7 @@ WORKDIR /app
 # RUN git clone https://github.com/streamlit/streamlit-example.git .
 COPY . ./
 
+RUN pip install --upgrade pip
 RUN pip install --upgrade -r requirements.txt
 
 EXPOSE 8501
