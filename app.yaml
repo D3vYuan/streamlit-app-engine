@@ -22,7 +22,11 @@ resources:
 
 # instance_class: B2
 network:
+  name: log-vpc
+  subnetwork_name: log-vpc
   session_affinity: true
+  forwarded_ports:
+    - 8080:8501
 
 liveness_check:
   path: "/liveness_check"
