@@ -4,10 +4,10 @@ __pycache__/
 *$py.class
 
 # Script
-*.sh
-!build_docker.sh
-!run_docker.sh
-!build_app_engine.sh
+# *.sh
+# !build_docker.sh
+# !run_docker.sh
+# !build_app_engine.sh
 
 # C extensions
 *.so
