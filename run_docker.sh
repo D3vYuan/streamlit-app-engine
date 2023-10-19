@@ -27,7 +27,7 @@ run_docker(){
     docker run -itd --rm -p ${source_port}:${destination_port} ${image_name}
 }
 
-if [ ! $# -le 3 ]]
+if [[ ! $# -le 3 ]]
 then
     usage
 fi
