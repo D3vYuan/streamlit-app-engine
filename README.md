@@ -24,8 +24,19 @@
     <li>
         <a href="#about-the-project">About The Project</a>
     </li>
-    <li><a href="#setup">Setup</a></li>
-    <li><a href="#implementation">Implementation</a></li>
+    <li>
+      <a href="#setup">Setup</a>
+      <ul>
+            <li><a href="#vpc-network">VPC Network</a></li>
+            <li><a href="#service-account">Service Account</a></li>
+        </ul>
+    </li>
+    <li>
+      <a href="#implementation">Implementation</a>
+      <ul>
+            <li><a href="#streamlit-application">Streamlit Application</a></li>
+        </ul>
+    </li>
     <li>
       <a href="#usage">Usage</a>
       <ul>
@@ -33,7 +44,6 @@
             <li><a href="#via-app-engine">Via App Engine</a></li>
         </ul>
     </li>
-    <li><a href="#challenges">Challenges</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
 </ol>
 <!-- </details> -->
@@ -48,12 +58,11 @@ This project is created to showcase how we can deploy `Streamlit` application to
 
 The following are some of the requirements:
 
+- Create a sample `Streamlit` application
 - Dockerize `Streamlit` application
 - Deploy `Streamlit` application to `App Engine Flex`
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
----
 
 <!-- Setup -->
 
@@ -61,11 +70,33 @@ The following are some of the requirements:
 
 Base on the requirements, the following components are required to be setup:
 
-- XXXXXXXXXXXXXX
+- `VPC` Network for `App Engine`
+- `Service Account` for `App Engine` Flex
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
----
+### VPC Network
+
+Create a `network` and `subnetwork` in the `VPC` for the `App Engine`. You may skip this steps if you decide to use the _default_ network or any existing network.
+
+| ![VPC Network Setup][setup-vpc-network] |
+| :-------------------------------------: |
+|              _VPC Network_              |
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+### Service Account
+
+Ensure that the default `Service Account` for the `App Engine` has the following permissions:
+
+- `Storage Object Viewer`
+- `App Engine flexible environment Service Agent`
+
+| ![Service Account Setup][setup-service-account] |
+| :---------------------------------------------: |
+|               _Service Accounts_                |
+
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Implementation
 
@@ -75,7 +106,7 @@ Base on the requirements, the following are the tasks in the process:
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-### Sample Streamlit Application
+### Streamlit Application
 
 In order to test the deployment, we will create a sample application that will have 2 buttons, 1 to add to the counter and the other to reset the counter.
 
@@ -84,8 +115,6 @@ In order to test the deployment, we will create a sample application that will h
 |            _Sample Streamlit Application_            |
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
----
 
 <!-- USAGE EXAMPLES -->
 
@@ -103,7 +132,9 @@ The following are some of the usage:
 #### Dockerfile
 
 The following is the `Dockerfile` configuration: <br/>
-More information for the virtual environment in python runtime can be found [here][streamlit-app-engine-customize-python-runtime] <br>
+[NOTE]
+
+- For the application to run in `App Engine`, the `Docker` image must listen to the port `8080`. More information [here][streamlit-app-engine-docker-port]
 
 ```docker
 # Use the docker image for the app engine python runtime environment
@@ -265,31 +296,6 @@ The address of the application should looks like the following:
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
----
-
-<!-- Challenges -->
-
-## Challenges
-
-The following are some challenges encountered:
-
-- <p align="right">(<a href="#top">back to top</a>)</p>
-
-<!-- ### Challenge #1: Updating BigQuery values from Dataproc
-<br/>
-
-**Observations** <br/>
-<br/>More information can be found [here][ref-bigquery-client-write]
-
-<br/>
-
-**Resolution** <br/>
-<br/>
-
-<p align="right">(<a href="#top">back to top</a>)</p> -->
-
----
-
 <!-- ACKNOWLEDGMENTS -->
 
 ## Acknowledgments
@@ -309,9 +315,12 @@ The following are some challenges encountered:
 <!-- MARKDOWN LINKS & IMAGES -->
 
 [template-resource]: https://github.com/othneildrew/Best-README-Template/blob/master/README.md
+
+[setup-vpc-network]:
+[setup-service-account]:  
 [streamlit-app-engine-deployment]: https://www.whitphx.info/posts/20211214-streamlit-app-engine/
 [streamlit-app-engine-quickstart]: https://cloud.google.com/appengine/docs/flexible/python/create-app#mac-os-linux
-[streamlit-app-engine-custom-runtime]: https://cloud.google.com/appengine/docs/flexible/custom-runtimes/build#listening_to_port_8080
+[streamlit-app-engine-custom-runtime]: https://cloud.google.com/appengine/docs/flexible/custom-runtimes
 [streamlit-app-engine-python-runtime]: https://cloud.google.com/appengine/docs/flexible/python/runtime
 [streamlit-app-engine-customize-python-runtime]: https://cloud.google.com/appengine/docs/flexible/python/customizing-the-python-runtime
 [streamlit-app-engine-yaml-configuration]: https://cloud.google.com/appengine/docs/flexible/reference/app-yaml?tab=python
@@ -321,3 +330,4 @@ The following are some challenges encountered:
 [streamlit-app-app-engine-console]: ./images/streamlit_application_app_engine_console.png
 [streamlit-app-app-engine-demo]: ./images/streamlit_application_app_engine_demo.png
 [streamlit-app-please-wait-issue]: https://docs.streamlit.io/knowledge-base/deploy/remote-start#symptom-2-the-app-says-please-wait-forever
+[streamlit-app-engine-docker-port]: https://cloud.google.com/appengine/docs/flexible/custom-runtimes/build#listening_to_port_8080:~:text=You%20must%20be%20sure%20that%20your%20application%20code%20is%20listening%20on%208080.
