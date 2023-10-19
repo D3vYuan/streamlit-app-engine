@@ -315,9 +315,8 @@ The address of the application should looks like the following:
 <!-- MARKDOWN LINKS & IMAGES -->
 
 [template-resource]: https://github.com/othneildrew/Best-README-Template/blob/master/README.md
-
-[setup-vpc-network]:
-[setup-service-account]:  
+[setup-vpc-network]: ./images/setup_vpc_network.png
+[setup-service-account]: ./images/setup_service_account.png
 [streamlit-app-engine-deployment]: https://www.whitphx.info/posts/20211214-streamlit-app-engine/
 [streamlit-app-engine-quickstart]: https://cloud.google.com/appengine/docs/flexible/python/create-app#mac-os-linux
 [streamlit-app-engine-custom-runtime]: https://cloud.google.com/appengine/docs/flexible/custom-runtimes
